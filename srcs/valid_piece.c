@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 13:09:31 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/04 14:51:39 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/07 14:12:58 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		valid_piece(char *str)
 	i = 0;
 	k = 0;
 	j = 0;
-	while (str[i] == '.' || str[i] '#' || str[i] = '\n')
+	while (str[i] == '.' || str[i] == '#' || str[i] == '\n')
 	{
 		if (str[i] == '#')
 		{
@@ -29,7 +29,7 @@ int		valid_piece(char *str)
 		}
 		i++;
 	}
-	if (j != 4 || k != 4)
+	if (j != 4 || k != 4 || i != 20)
 		return (0);
 	return (1);
 }
