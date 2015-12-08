@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   save_pieces.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 16:47:11 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/08 14:28:43 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/08 14:25:45 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/08 15:02:06 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#define bufsize 32
-
-int		main(int argc, char **argv)
+int		count_pieces(char *pieces)
 {
-	int		fd;
-	char	**pieces;
+	int		i;
+	int		j;
 
-	fd = open(argv[1], O_RDONLY);
-	pieces = save_pieces(fd);
-	/*if (valid_piece() == 0)
+	j = 0;
+	i = 0;
+	while (pieces[i])
 	{
-		ft_putstr("error\n");
-		return (0);
-	}*/
+		if (pieces[i] == '\n')
+			j++;
+		i++;
+	}
+	j++;
+	return (j/5);
+}
+
+char	**save_pieces(int fd)
+{
+	char	*pieces;
+	char	c;
+	int		i;
+
+	i = 0;
+	while (read(fd, &c, 1))
+	{
+		pieces[i] = c;
+		++i;
+	}
 }
