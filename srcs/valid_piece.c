@@ -6,30 +6,34 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 13:09:31 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/07 14:12:58 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/09 12:37:54 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		valid_piece(char *str)
+int		valid_piece(char *str, int n)
 {
 	int		i;
 	int		j;
 	int		k;
+	int		x;
 
 	i = 0;
 	k = 0;
 	j = 0;
+	x = 0;
 	while (str[i] == '.' || str[i] == '#' || str[i] == '\n')
 	{
 		if (str[i] == '#')
 		{
 			k++;
-			if (str[i + 1] == '#' || str[i + 5] == '#' || j == 3)
+			if (str[i + 1] == '#' || str[i + 5] == '#' || j == 3 + 4 * x)
 				j++;
 		}
+		if (str[i] == '\n' && str[i - 1] == '\n')
+			++x;
 		i++;
 	}
-	if (j != 4 || k != 4 || i != 20)
+	if (j != (4 * n) || k != (4 * n) || i != (20 * n + 1 * (n - 1)))
 		return (0);
 	return (1);
 }

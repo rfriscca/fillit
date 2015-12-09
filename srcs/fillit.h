@@ -1,20 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 12:51:04 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/08 12:51:31 by rfriscca         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FILLIT_H
 # define FILLIT_H
 
+# include "../libft/libft.h"
+
 char	**create_square(int size);
+int		count_pieces(char *pieces);
+void	create_tab(char *pieces, char **tab);
+char	**save_pieces(int fd);
+int		main(int argc, char **argv);
 int		square_min_size(char **tab);
 char	**taballoc(int l, int c);
-int		valid_piece(char *str);
+int		valid_piece(char *str, int n);
 #endif
