@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:25:45 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/09 12:32:57 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/16 13:57:36 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ char	**save_pieces(int fd)
 	num_pieces = count_pieces(pieces);
 	if (valid_piece(pieces, num_pieces) == 0)
 		return (NULL);
-	tab = taballoc(num_pieces, 20);
+	if ((tab = taballoc(num_pieces, 20)) == NULL)
+		return (NULL);
 	create_tab(pieces, tab);
 	free(pieces);
 	return (tab);

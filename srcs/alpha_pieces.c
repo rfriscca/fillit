@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   alpha_pieces.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/16 14:01:51 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/16 17:19:12 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/16 13:48:57 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/16 14:00:12 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-int		piece_fit(char *piece, char **square)
+void	alpha_pieces(char **tab)
 {
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-}
-
-void	put_piece(char *piece, char **square)
-{
-	int		j;
-	int		k;
-
-	j = 0;
-	k = 0;
-	while (ft_strcmp(square[j], "end_of_tab"))
+	while (ft_strcmp(tab[i], "end_of_tab"))
 	{
-		while (square[j][k])
+		while (tab[i][j])
 		{
-			if (square[j][k] == '.')
+			if (tab[i][j] == '#')
+				tab[i][j] = 'A' + i;
+			++j;
 		}
+		j = 0;
+		++i;
 	}
-}
-
-char	**solve(char **pieces, int size)
-{
-	char	**square;
-
-	square = create_square(size);
 }

@@ -11,4 +11,5 @@ int		main(int argc, char **argv);
 int		square_min_size(char **tab);
 char	**taballoc(int l, int c);
 int		valid_piece(char *str, int n);
+void	alpha_pieces(char **tab);
 #endif

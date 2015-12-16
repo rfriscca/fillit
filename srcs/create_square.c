@@ -6,9 +6,11 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 15:54:19 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/07 16:04:47 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/16 13:55:22 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
 
 char	**create_square(int size)
 {
@@ -18,10 +20,11 @@ char	**create_square(int size)
 
 	i = 0;
 	j = 0;
-	tab = taballoc(size, size + 1);
-	while (tab[i])
+	if ((tab = taballoc(size, size + 1)) == NULL)
+		return (NULL);
+	while (i < size)
 	{
-		while (tab[i][j])
+		while (j < size + 1)
 		{
 			tab[i][j] = '.';
 			if (j == size)
