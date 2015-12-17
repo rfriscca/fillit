@@ -6,33 +6,51 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 14:01:51 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/16 17:19:12 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/17 17:09:55 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		piece_fit(char *piece, char **square)
+int		piece_fit(char *piece, char **square, int j, int k)
 {
 	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
+	i = k;
+	while (!ft_isalpha(*piece))
+		++piece;
+	while (*piece)
+	{
+		if (ft_isalpha(*piece) && square[j][k] != '.')
+			return (0);
+		++k;
+		++piece;
+		if (*piece == '\n')
+		{
+			++j;
+			k = i;
+		}
+	}
+	return (1);
 }
 
-void	put_piece(char *piece, char **square)
+void	put_piece(char *piece, char **square, int j, int k)
 {
-	int		j;
-	int		k;
+	int		i;
 
-	j = 0;
-	k = 0;
-	while (ft_strcmp(square[j], "end_of_tab"))
+	i = k;
+	while (!ft_isalpha(*piece))
+		++piece;
+	while (*piece)
 	{
-		while (square[j][k])
+		if (ft_isalpha(*piece) && square[j][k] == '.')
+			square[j][k] = *piece;
+		++k;
+		++piece;
+		if (*piece == '\n')
 		{
-			if (square[j][k] == '.')
+			++j;
+			k = i;
 		}
 	}
 }
@@ -42,4 +60,5 @@ char	**solve(char **pieces, int size)
 	char	**square;
 
 	square = create_square(size);
+
 }
