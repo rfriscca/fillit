@@ -6,53 +6,48 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 14:01:51 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/17 17:09:55 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/18 14:53:50 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		piece_fit(char *piece, char **square, int j, int k)
+int		tab_len(char **tab)
 {
 	int		i;
 
-	i = k;
-	while (!ft_isalpha(*piece))
-		++piece;
-	while (*piece)
-	{
-		if (ft_isalpha(*piece) && square[j][k] != '.')
-			return (0);
-		++k;
-		++piece;
-		if (*piece == '\n')
-		{
-			++j;
-			k = i;
-		}
-	}
-	return (1);
+	i = 0;
+	while (ft_strcmp(tab[i], "end_of_tab"))
+		++i;
+	return (i);
 }
 
-void	put_piece(char *piece, char **square, int j, int k)
+int		check_square(char **pieces, char **square)
 {
 	int		i;
+	int		j;
+	int		k;
 
-	i = k;
-	while (!ft_isalpha(*piece))
-		++piece;
-	while (*piece)
+	i = 0;
+	j = 0;
+	k = 0;
+	while (ft_strcmp(square[i], "end_of_tab"))
 	{
-		if (ft_isalpha(*piece) && square[j][k] == '.')
-			square[j][k] = *piece;
-		++k;
-		++piece;
-		if (*piece == '\n')
+		while (square[i][j] != '\n')
 		{
+			if (piece_fit(pieces[k], square, i, j))
+			{
+				put_piece(pieces[k], square, i, j);
+				++k;
+			}
 			++j;
-			k = i;
 		}
+		j = 0;
+		++i;
 	}
+	if (k == tab_len(pieces))
+		return (1);
+	return (0);
 }
 
 char	**solve(char **pieces, int size)
@@ -60,5 +55,7 @@ char	**solve(char **pieces, int size)
 	char	**square;
 
 	square = create_square(size);
-
+	if (check_square(pieces, square))
+		return (square);
+	return (NULL);
 }

@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   put_piece.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 16:47:11 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/18 14:53:59 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/18 14:07:02 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/18 14:33:18 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 
-int		main(int argc, char **argv)
+void	put_piece(char *piece, char **square, int j, int k)
 {
-	int		fd;
-	char	**pieces;
-	char	**square;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
-	fd = open(argv[1], O_RDONLY);
-	pieces = save_pieces(fd);
-	if (pieces == NULL)
+	while (!ft_isalpha(*piece))
 	{
-		ft_putstr("error\n");
-		return (0);
+		++piece;
 	}
-	j = square_min_size(pieces);
-	alpha_pieces(pieces);
-	square = solve(pieces, j);
-	while (ft_strcmp(square[i], "end_of_tab"))
+	i = k - (i % 5);
+	while (*piece)
 	{
-		printf("%s", square[i]);
-		++i;
+		if (ft_isalpha(*piece) && square[j][k] == '.')
+			square[j][k] = *piece;
+		++k;
+		++piece;
+		if (*piece == '\n')
+		{
+			++j;
+			k = i;
+		}
 	}
 }
