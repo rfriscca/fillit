@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 13:59:12 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/17 14:25:20 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/18 15:00:18 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	reset_square(char **square)
 		while (square[i][j] != '\n')
 		{
 			square[i][j] = '.';
-			++j
+			++j;
 		}
 		j = 0;
 		++i;

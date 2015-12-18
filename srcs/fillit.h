@@ -3,6 +3,8 @@
 
 # include "../libft/libft.h"
 
+void	reset_piece(char *piece, char **square);
+char	**solve(char **pieces, int size);
 void	reset_square(char **square);
 int		piece_fit(char *piece, char **square, int j, int k);
 void	put_piece(char *piece, char **square, int j, int k);

@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 14:09:22 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/18 14:31:34 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/18 15:16:38 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		piece_fit(char *piece, char **square, int j, int k)
 		{
 			++j;
 			k = i;
+			++piece;
 		}
 	}
 	return (1);

@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_piece.c                                      :+:      :+:    :+:   */
+/*   reset_piece.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 13:09:31 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/18 16:49:43 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/18 15:49:27 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/18 15:55:47 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		valid_piece(char *str, int n)
+#include "fillit.h"
+
+void	reset_piece(char *piece, char **square)
 {
 	int		i;
 	int		j;
 	int		k;
-	int		x;
 
 	i = 0;
-	k = 0;
 	j = 0;
-	x = 0;
-	while (str[i] == '.' || str[i] == '#' || str[i] == '\n')
+	k = 0;
+	while (!ft_isalpha(*piece))
+		++piece;
+	while (k < 4)
 	{
-		if (str[i] == '#')
+		while (square[i][j] != '\n')
 		{
-			k++;
-			if (str[i + 1] == '#' || str[i + 2] != '#' || j == 3 + 4 * x)
-				j++;
+			if (square[i][j] == *piece)
+			{
+				square[i][j] = '.';
+				++k;
+			}
+			++j;
 		}
-		if (str[i] == '\n' && str[i - 1] == '\n')
-			++x;
-		i++;
+		j = 0;
+		++i;
 	}
-	if (j != (4 * n) || k != (4 * n) || i != (20 * n + 1 * (n - 1)))
-		return (0);
-	return (1);
 }
