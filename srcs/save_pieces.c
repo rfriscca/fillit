@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:25:45 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/16 13:57:36 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/22 16:17:08 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**save_pieces(int fd)
 	int		num_pieces;
 
 	i = 0;
-	pieces = ft_strnew(500);
+	pieces = ft_strnew(1000);
 	while (read(fd, &c, 1))
 	{
 		pieces[i] = c;

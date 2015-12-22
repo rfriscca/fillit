@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 14:01:51 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/18 16:32:32 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/22 17:44:46 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,46 @@ int		check_square(char **pieces, char **square)
 	return (0);
 }
 
+char	**swap_pieces(char **pieces, int l, int where)
+{
+	char	*save;
+
+	save = ft_strnew(21);
+	save = ft_strcpy(save, pieces[l]);
+	pieces[l] = ft_strcpy(pieces[l], pieces[where]);
+	pieces[where] = ft_strcpy(pieces[where], save);
+	free(save);
+	return (pieces);
+}
+
 char	**solve(char **pieces, int size)
 {
 	char	**square;
+	int		i;
+	int		flag;
 
+	i = tab_len(pieces) - 1;
+	flag = 0;
 	square = create_square(size);
-	if (check_square(pieces, square))
-		return (square);
+	while (i < tab_len(pieces))
+	{
+		if (!flag)
+		{
+			--i;
+			pieces = swap_pieces(pieces, i, tab_len(pieces) - 1);
+		}
+		if (flag)
+		{
+			++i;
+			pieces = swap_pieces(pieces, i, 0);
+		}
+		if (check_square(pieces, square))
+			return (square);
+		if (i == 0)
+			flag = 1;
+		if (i == tab_len(pieces) - 1)
+			++i;
+		reset_square(square);
+	}
 	return (solve(pieces, size + 1));
 }
