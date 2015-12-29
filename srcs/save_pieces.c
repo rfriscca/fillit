@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:25:45 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/22 16:17:08 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/29 14:00:53 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ void	create_tab(char *pieces, char **tab)
 		++l;
 		if (l == 20)
 		{
+			tab[k][22] = 0;
 			++k;
 			l = 0;
 			++j;
 		}
 	}
+	tab[k] = "end_of_tab";
 }
 
 char	**save_pieces(int fd)
@@ -70,7 +72,7 @@ char	**save_pieces(int fd)
 	num_pieces = count_pieces(pieces);
 	if (valid_piece(pieces, num_pieces) == 0)
 		return (NULL);
-	if ((tab = taballoc(num_pieces, 20)) == NULL)
+	if ((tab = taballoc(num_pieces + 1, 22)) == NULL)
 		return (NULL);
 	create_tab(pieces, tab);
 	free(pieces);

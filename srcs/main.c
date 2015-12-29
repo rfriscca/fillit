@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:47:11 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/28 14:21:32 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/29 13:09:33 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@
 
 int		main(int argc, char **argv)
 {
-	char	pieces[8][22] = {{ "...#\n...#\n...#\n...#\n\0\\0"},{"....\n....\n....\n####\n\0\\0"},
-		{".###\n...#\n....\n....\n\0\\0"},{"....\n..##\n.##.\n....\n\0\\0"},
-		{"....\n.##.\n.##.\n....\n\0\\0"},{"....\n....\n##..\n.##.\n\0\\0"},
-		{"##..\n.#..\n.#..\n....\n\0\\0"},{"....\n###.\n.#..\n....\n\0\\0"}};
+	int		fd;
+	char	**pieces;
 	char	**square;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
+	fd = open(argv[1], O_RDONLY);
+	pieces = save_pieces(fd);
 	if (pieces == NULL)
 	{
 		ft_putstr("error\n");
@@ -40,4 +42,5 @@ int		main(int argc, char **argv)
 		printf("%s", square[i]);
 		++i;
 	}
+	return (argc);
 }
