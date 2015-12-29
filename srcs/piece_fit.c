@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 14:09:22 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/18 15:16:38 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/29 15:00:55 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		piece_fit(char *piece, char **square, int j, int k)
 	i = k - (i % 5);
 	while (*piece)
 	{
-		if (ft_isalpha(*piece) && k >= 0 && square[j][k] != '.')
+		if (ft_isalpha(*piece) && square[j][k] != '.')
 			return (0);
 		++k;
 		++piece;
