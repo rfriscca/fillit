@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 16:47:11 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/31 14:01:46 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:39:50 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 
 	i = 0;
 	j = 0;
-	if ((fd = open(argv[1], O_RDONLY)) == -1 ||
+	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1 ||
 			(pieces = save_pieces(fd)) == NULL)
 	{
 		ft_putstr("error\n");
@@ -36,5 +36,5 @@ int		main(int argc, char **argv)
 		ft_putstr(square[i]);
 		++i;
 	}
-	return (argc);
+	return (0);
 }
