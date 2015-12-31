@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/22 13:17:32 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/31 13:59:01 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/31 16:18:21 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 void	reset_piece(char *piece, char **square);
 char	**solve(char **pieces, int size);
-void	reset_square(char **square);
 int		piece_fit(char *piece, char **square, int j, int k);
 void	put_piece(char *piece, char **square, int j, int k);
 char	**create_square(int size);
