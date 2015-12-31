@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 14:07:02 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/18 15:16:04 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:14:53 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	put_piece(char *piece, char **square, int j, int k)
 			++piece;
 		}
 	}
+	*(piece + 2) = 1;
 }

@@ -6,14 +6,15 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/22 13:17:32 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/22 16:16:40 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/31 13:59:01 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "../libft/libft.h"
+# include "../includes/libft/libft.h"
+# include <fcntl.h>
 
 void	reset_piece(char *piece, char **square);
 char	**solve(char **pieces, int size);

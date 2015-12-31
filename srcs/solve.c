@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 09:33:36 by rfriscca          #+#    #+#             */
-/*   Updated: 2015/12/29 14:54:13 by rfriscca         ###   ########.fr       */
+/*   Updated: 2015/12/31 14:15:46 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int		fillit(char **pieces, char **square, int l)
 			if (square[i][j] == '.' && piece_fit(pieces[l], square, i, j))
 			{
 				put_piece(pieces[l], square, i, j);
-				pieces[l][22] = 1;
 				if (fillit(pieces, square, check_pieces(pieces, l + 1)) == 1)
 					return (1);
 				pieces[l][22] = 0;
