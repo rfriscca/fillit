@@ -6,7 +6,7 @@
 #    By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/31 16:08:02 by rfriscca          #+#    #+#              #
-#    Updated: 2015/12/31 16:39:13 by rfriscca         ###   ########.fr        #
+#    Updated: 2016/01/04 12:58:46 by rfriscca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ all : LIBFT $(NAME)
 
 $(NAME) :
 	cd $(SRCS_DIR) && gcc $(FLAGS) -c $(SRCS)
+	cd $(SRCS_DIR) && gcc $(OBJ) -o $(NAME) -L../includes/libft -lft && mv $(NAME) ..
 
 LIBFT :
 	cd $(LIBFT_DIR) && $(MAKE)
@@ -45,4 +46,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : clean fclean re all
+.PHONY : clean fclean re all LIBFT
