@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:25:45 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/05 16:21:33 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/01/07 14:27:09 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,41 @@ void	create_tab(char *pieces, char **tab)
 	tab[k] = "end_of_tab";
 }
 
+char	**check_error(char *pieces)
+{
+	int		num_pieces;
+	char	**tab;
+
+	if ((num_pieces = count_pieces(pieces)) > 26)
+		return (NULL);
+	if (valid_piece(pieces, num_pieces) == 0)
+		return (NULL);
+	if ((tab = taballoc(num_pieces + 1, 22)) == NULL)
+		return (NULL);
+	return (tab);
+}
+
 char	**save_pieces(int fd)
 {
 	char	*pieces;
 	char	**tab;
 	char	c;
 	int		i;
-	int		num_pieces;
 
 	i = 0;
 	pieces = ft_strnew(1000);
-	while (read(fd, &c, 1))
+	if (read(fd, &c, 1) == -1)
+		return (NULL);
+	while (c)
 	{
 		pieces[i] = c;
 		++i;
+		if (read(fd, &c, 1) == -1)
+			return (NULL);
 		if (i > 999)
 			return (NULL);
 	}
-	if ((num_pieces = count_pieces(pieces)) > 26)
-		return (NULL);
-	if (valid_piece(pieces, num_pieces) == 0)
-		return (NULL);
-	if ((tab = taballoc(num_pieces + 1, 22)) == NULL)
+	if ((tab = check_error(pieces)) == NULL)
 		return (NULL);
 	create_tab(pieces, tab);
 	free(pieces);
