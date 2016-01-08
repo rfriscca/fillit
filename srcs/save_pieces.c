@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 14:25:45 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/07 14:27:09 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/01/08 16:36:35 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,17 @@ char	**save_pieces(int fd)
 	char	**tab;
 	char	c;
 	int		i;
+	int		k;
 
 	i = 0;
 	pieces = ft_strnew(1000);
-	if (read(fd, &c, 1) == -1)
+	if ((k = read(fd, &c, 1)) == -1)
 		return (NULL);
-	while (c)
+	while (k)
 	{
 		pieces[i] = c;
 		++i;
-		if (read(fd, &c, 1) == -1)
+		if ((k = read(fd, &c, 1)) == -1)
 			return (NULL);
 		if (i > 999)
 			return (NULL);
